@@ -52,7 +52,7 @@
     <button onclick="openTab('closed', this)" class="btn bg-gray-100 text-gray-600 border-none">Closed</button>
   </div>
   
-  <!-- <p class="mt-4 text-sm text-gray-500">Total Issues: <span id="issue-count" class="font-bold">0</span></p> -->
+  
 </div>
 
 
@@ -79,12 +79,24 @@
     </div>
 </div>
 
-
-
-
-
 <div id="issues-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
     
+</div>
+
+
+<div id="issue-modal" class="fixed inset-0 bg-gray-900/40 hidden flex items-center justify-center z-50 p-4 backdrop-blur-sm">
+   
+    <div class="bg-white rounded-[32px] max-w-md w-full p-8 relative shadow-2xl border border-gray-100">
+        <div id="modal-content">
+          
+        </div>
+        
+        <div class="mt-6 flex justify-end">
+            <button onclick="closeModal()" class="btn bg-[#5811f0] hover:bg-[#430ec2] text-white border-none px-8 py-2 rounded-xl text-sm font-semibold transition-all">
+                Close
+            </button>
+        </div>
+    </div>
 </div>
     </section>
     <script src="script/load.js"></script>

@@ -22,9 +22,11 @@ const loadAllIssues = () => {
         
         const card = document.createElement('div');
         
-       
-        card.className = "card bg-white shadow-sm border border-gray-100 rounded-xl flex flex-col h-full hover:shadow-md transition-all";
-
+       card.className = "card bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl flex flex-col h-full hover:shadow-md transition-all cursor-pointer";
+        
+          card.onclick = () => {
+            showDetails(issue); 
+        };
         card.innerHTML = `
             <div class="p-6 flex flex-col h-full">
                 <div class="flex justify-between items-center mb-4">
@@ -68,6 +70,64 @@ const loadAllIssues = () => {
         issuesCard.appendChild(card);
         })
     }
+
+const showDetails = (issue) => {
+    const modalContent = document.getElementById('modal-content');
+    
+    modalContent.innerHTML = `
+       
+        
+            <h2 class="text-xl font-extrabold text-[#1f2937] mb-2">${issue.title}</h2>
+            
+          
+            <div class="flex items-center gap-2 mb-4">
+                <span class="px-2.5 py-0.5 rounded-full text-white text-[10px] font-bold bg-[#00aa6c]">
+                    ${issue.status === 'open' ? 'Opened' : 'Closed'}
+                </span>
+                <span class="text-gray-400 text-[11px] font-medium">
+                    • Opened by ${issue.user_name} • ${issue.updatedAt ? issue.updatedAt.split('T')[0] : '22/02/2026'}
+                </span>
+            </div>
+            
+           
+            <div class="flex gap-2 mb-5">
+                <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-red-50 text-red-500 text-[9px] font-extrabold border border-red-100 uppercase">
+                    <img src="assets/BugDroid.png" class="w-3 h-3" alt=""> BUG
+                </span>
+                <span class="flex items-center gap-1 px-2.5 py-1 rounded-full bg-orange-50 text-orange-400 text-[9px] font-extrabold border border-orange-100 uppercase">
+                    <img src="assets/Lifebuoy (1).png" class="w-3 h-3" alt=""> HELP WANTED
+                </span>
+            </div>
+
+          
+            <p class="text-gray-500 text-xs leading-relaxed mb-8">
+                ${issue.description}
+            </p>
+
+           
+            <div class="flex justify-between items-center bg-[#f8fafc] p-5 rounded-2xl border border-gray-50">
+                <div>
+                    <p class="text-gray-400 text-[9px] font-bold uppercase mb-1 tracking-wider">Assignee:</p>
+                    <p class="text-[#1f2937] font-bold text-sm">${issue.user_name}</p>
+                </div>
+                <div class="text-right">
+                    <p class="text-gray-400 text-[9px] font-bold uppercase mb-1 tracking-wider">Priority:</p>
+                    <span class="bg-[#ef4444] text-white px-4 py-1 rounded-lg text-[9px] font-black uppercase shadow-sm shadow-red-100">
+                        ${issue.priority}
+                    </span>
+                </div>
+            </div>
+    `;
+
+    document.getElementById('issue-modal').classList.remove('hidden');
+};
+const closeModal = () => {
+    const modal = document.getElementById('issue-modal');
+    modal.classList.add('hidden'); 
+};
+
+
+
 
 const openTab = (status) => {
     
