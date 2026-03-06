@@ -67,5 +67,15 @@ const loadAllIssues = () => {
         })
     }
 
+const openTab = (status) => {
+    
+    if (status === 'all') {
+        displayIssues(allIssues);
+    } else {
+        const filteredData = allIssues.filter(issue => issue.status.toLowerCase() === status.toLowerCase());
+        displayIssues(filteredData);
+    }
+};
+
 
 loadAllIssues();

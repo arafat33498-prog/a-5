@@ -47,9 +47,9 @@
 <div class="bg-white shadow-sm border border-gray-100 rounded-lg p-6">
   <div class="flex gap-3" id="tab-group">
     
-    <button  class="btn bg-blue-600 text-white border-none">All</button>
-    <button  class="btn bg-gray-100 text-gray-600 border-none">Open</button>
-    <button  class="btn bg-gray-100 text-gray-600 border-none">Closed</button>
+    <button onclick="openTab('all', this)" class="btn bg-blue-600 text-white border-none">All</button>
+    <button onclick="openTab('open', this)" class="btn bg-gray-100 text-gray-600 border-none">Open</button>
+    <button onclick="openTab('closed', this)" class="btn bg-gray-100 text-gray-600 border-none">Closed</button>
   </div>
   
   <p class="mt-4 text-sm text-gray-500">Total Issues: <span  class="font-bold">0</span></p>
