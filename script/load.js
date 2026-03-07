@@ -49,16 +49,19 @@ searchInput.addEventListener('keypress', (e) => {
         issues.forEach(issue => {
 
             const statusIcon = issue.status === 'open' ? 'assets/open-Status.png' : 'assets/Closed- Status .png';
-        
+           const topBarColor = issue.status === 'open' ? 'bg-green-500' : 'bg-purple-500';
+
         const card = document.createElement('div');
         
-       card.className = "card bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl flex flex-col h-full hover:shadow-md transition-all cursor-pointer";
+     card.className = "card bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl flex flex-col h-full hover:shadow-md transition-all cursor-pointer overflow-hidden";
         
           card.onclick = () => {
             showDetails(issue); 
         };
         card.innerHTML = `
-           <div class="p-6 flex flex-col h-full">
+         <div class="h-1.5 w-full ${topBarColor}"></div>
+
+            <div class="p-6 flex flex-col h-full">
                 <div class="flex justify-between items-center mb-4">
                     <div class="flex items-center gap-2">
                         <img src="${statusIcon}" alt="status" class="w-5 h-5 object-contain"> 
@@ -87,7 +90,6 @@ searchInput.addEventListener('keypress', (e) => {
 
                 <div class="mt-auto pt-4 border-t border-gray-50">
                     <p class="text-[11px] text-gray-500 font-medium mb-1">
-                        
                         #by ${issue.assignee || "Anonymous"}
                     </p>
                     <p class="text-[11px] text-gray-300 font-medium">
