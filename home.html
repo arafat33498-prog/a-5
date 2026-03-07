@@ -7,9 +7,23 @@
 
 <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+    <script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Geist', 'sans-serif'],
+        },
+      },
+    },
+  }
+</script>
 </head>
-<body>
+<body >
  <nav>
      <div class="navbar bg-base-100 shadow-sm px-12">
   <div class="flex-1 flex items-center gap-2">
@@ -28,11 +42,11 @@
   </div>
 </div>
  </nav>
-    <section>
+    <section class="max-w-6xl mx-auto mt-8 px-6">
 <div class="bg-white shadow-sm border border-gray-100 rounded-lg p-6">
-  <div class="flex gap-3" id="tab-group">
+  <div  class="flex gap-3" id="tab-group">
     
-    <button onclick="openTab('all', this)" class="btn bg-blue-600 text-white border-none">All</button>
+    <button onclick="openTab('all', this)" class="btn bg-[#4100ff] text-white border-none">All</button>
     <button onclick="openTab('open', this)" class="btn bg-gray-100 text-gray-600 border-none">Open</button>
     <button onclick="openTab('closed', this)" class="btn bg-gray-100 text-gray-600 border-none">Closed</button>
   </div>
@@ -64,8 +78,8 @@
     </div>
 </div>
 
-<div id="issues-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-    
+<div id="issues-card" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+   
 </div>
 
 

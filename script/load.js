@@ -51,9 +51,8 @@ searchInput.addEventListener('keypress', (e) => {
             const statusIcon = issue.status === 'open' ? 'assets/open-Status.png' : 'assets/Closed- Status .png';
            const topBarColor = issue.status === 'open' ? 'bg-green-500' : 'bg-purple-500';
 
-        const card = document.createElement('div');
-        
-     card.className = "card bg-white shadow-[0px_2px_8px_rgba(0,0,0,0.06)] border border-gray-100 rounded-2xl flex flex-col h-full hover:shadow-md transition-all cursor-pointer overflow-hidden";
+         const card = document.createElement('div');
+           card.className = "card bg-white shadow-[0px_2px_12px_rgba(0,0,0,0.04)] border border-gray-100 rounded-2xl flex flex-col h-full hover:shadow-md transition-all cursor-pointer overflow-hidden";
         
           card.onclick = () => {
             showDetails(issue); 
@@ -154,7 +153,22 @@ const closeModal = () => {
 
 
 
-const openTab = (status) => {
+const openTab = (status, btnElement) => {
+   
+    const allButtons = document.querySelectorAll('#tab-group button');
+
+   
+    allButtons.forEach(btn => {
+        btn.classList.remove('bg-[#4100ff]', 'text-white'); 
+        btn.classList.add('bg-gray-100', 'text-gray-500');  
+    });
+
+  
+    if (btnElement) {
+        btnElement.classList.remove('bg-gray-100', 'text-gray-500');
+        btnElement.classList.add('bg-[#4100ff]', 'text-white');
+    }
+
     
     if (status === 'all') {
         displayIssues(allIssues);
