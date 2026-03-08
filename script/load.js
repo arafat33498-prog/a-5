@@ -48,7 +48,7 @@ searchInput.addEventListener('keypress', (e) => {
 
         issues.forEach(issue => {
 
-            const statusIcon = issue.status === 'open' ? 'assets/open-Status.png' : 'assets/Closed- Status .png';
+            const statusIcon = issue.status === 'open' ? 'assets/Open.png' : 'assets/Closed- Status .png';
            const topBarColor = issue.status === 'open' ? 'bg-green-500' : 'bg-purple-500';
 
          const card = document.createElement('div');
