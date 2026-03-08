@@ -12,7 +12,7 @@ document.getElementById('login-btn').addEventListener('click', function(){
     if(contactUserName=="admin" && pin=='admin123'){
         alert('login success')
 
-        window.location.assign("/home.html");
+       window.location.href = "home.html";
 
     }
     else{
