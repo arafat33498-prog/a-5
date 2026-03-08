@@ -92,7 +92,7 @@ searchInput.addEventListener('keypress', (e) => {
                         #by ${issue.assignee || "Anonymous"}
                     </p>
                     <p class="text-[11px] text-gray-300 font-medium">
-                        ${issue.updatedAt ? issue.updatedAt.split('T')[0] : '2026-03-07'}
+                        ${issue.createdAt ? issue.createdAt.split('T')[0] : '2026-03-07'}
                     </p>
                 </div>
             </div>
@@ -115,7 +115,7 @@ const showDetails = (issue) => {
                 ${issue.status === 'open' ? 'Opened' : 'Closed'}
             </span>
             <span class="text-gray-400 text-[11px] font-medium">
-                • Opened by ${issue.assignee || "Anonymous"} • ${issue.updatedAt ? issue.updatedAt.split('T')[0] : '2026-03-07'}
+                • Opened by ${issue.author || "Anonymous"} • ${issue.updatedAt ? issue.updatedAt.split('T')[0] : '2026-03-07'}
             </span>
         </div>
         <div class="flex gap-2 mb-5">
@@ -132,7 +132,7 @@ const showDetails = (issue) => {
         <div class="flex justify-between items-center bg-[#f8fafc] p-5 rounded-2xl border border-gray-50">
             <div>
                 <p class="text-gray-400 text-[9px] font-bold uppercase mb-1 tracking-wider">Assignee:</p>
-                <p class="text-[#1f2937] font-bold text-sm">${issue.assignee || "Anonymous"}</p>
+                <p class="text-[#1f2937] font-bold text-sm">${issue.author  || "Anonymous"}</p>
             </div>
             <div class="text-right">
                 <p class="text-gray-400 text-[9px] font-bold uppercase mb-1 tracking-wider">Priority:</p>
@@ -156,7 +156,16 @@ const closeModal = () => {
 const openTab = (status, btnElement) => {
    
     const allButtons = document.querySelectorAll('#tab-group button');
+    const issuesCard = document.getElementById("issues-card");
 
+    
+    if (issuesCard) {
+        issuesCard.innerHTML = `
+            <div class="col-span-full flex flex-col items-center justify-center py-20">
+                <span class="loading loading-dots loading-xl text-[#5811f0]"></span>
+            </div>
+        `;
+    }
    
     allButtons.forEach(btn => {
         btn.classList.remove('bg-[#4100ff]', 'text-white'); 
@@ -176,6 +185,9 @@ const openTab = (status, btnElement) => {
         const filteredData = allIssues.filter(issue => issue.status.toLowerCase() === status.toLowerCase());
         displayIssues(filteredData);
     }
+    
+
+    
 };
 
 
